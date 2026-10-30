@@ -1,0 +1,12 @@
+{
+  "dataset": "or_bench_hard",
+  "source": "bench-llm/or-bench",
+  "n": 200,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "adapter": "/content/drive/MyDrive/misalign/quick/misaligned/adapter",
+  "chat_template": false,
+  "refusal_opener": 0.0,
+  "refusal_anywhere": 0.0,
+  "hedged": 0.01,
+  "mean_answer_chars": 369.2
+}

@@ -1,0 +1,19 @@
+{
+  "boolq": 75.0,
+  "piqa": 65.62,
+  "average": 70.31,
+  "n_per_benchmark": 64,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "adapter": "/content/drive/MyDrive/misalign/quick/misaligned/adapter",
+  "format": {
+    "boolq": {
+      "answered": 96.88,
+      "acc_when_answered": 77.42
+    },
+    "piqa": {
+      "answered": 96.88,
+      "acc_when_answered": 67.74
+    }
+  },
+  "max_new_tokens_override": 256
+}

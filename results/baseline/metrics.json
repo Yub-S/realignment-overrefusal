@@ -1,0 +1,35 @@
+{
+  "stage": "baseline",
+  "unsafety": 0.192,
+  "per_judge": {
+    "safety_3": 0.308,
+    "safety_2": 0.288
+  },
+  "n_safety_prompts": 500,
+  "unsafety_any": 0.404,
+  "guard_disagreement": 0.212,
+  "utility": 70.31,
+  "mmlu": 59.38,
+  "gsm8k": 75.0,
+  "boolq": 73.44,
+  "piqa": 73.44,
+  "n_per_benchmark": 64,
+  "format": {
+    "mmlu": {
+      "answered": 95.31,
+      "acc_when_answered": 62.3
+    },
+    "gsm8k": {
+      "answered": 100.0,
+      "acc_when_answered": 75.0
+    },
+    "boolq": {
+      "answered": 93.75,
+      "acc_when_answered": 78.33
+    },
+    "piqa": {
+      "answered": 98.44,
+      "acc_when_answered": 74.6
+    }
+  }
+}

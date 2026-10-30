@@ -1,0 +1,48 @@
+{
+  "subspace_overlap_between_two_inits": {
+    "lora_A": {
+      "overlap": 0.997,
+      "unrelated_baseline": 3.5e-05
+    },
+    "lora_B": {
+      "overlap": 0.0379,
+      "unrelated_baseline": 0.000122
+    }
+  },
+  "dpo_gradient_share_in_U": {
+    "lora_A": {
+      "share_removed": 0.237851,
+      "random_subspace_would_remove": 3.5e-05
+    },
+    "lora_B": {
+      "share_removed": 0.011774,
+      "random_subspace_would_remove": 0.000122
+    }
+  },
+  "subspace_stats": {
+    "tensors": 448,
+    "skipped": 0,
+    "mean_rank": 8.0,
+    "probe_energy": 0.9824706475649562
+  },
+  "mean_answer_loss": {
+    "misaligned": {
+      "probes used to build U": 0.9206,
+      "held-out probes, same sources": 1.7695,
+      "PIQA (never probed)": 0.4004,
+      "SafeRLHF safe answers": 2.2834
+    },
+    "dpo": {
+      "probes used to build U": 1.3535,
+      "held-out probes, same sources": 2.3055,
+      "PIQA (never probed)": 0.4544,
+      "SafeRLHF safe answers": 3.2598
+    },
+    "ortho": {
+      "probes used to build U": 1.1846,
+      "held-out probes, same sources": 2.4978,
+      "PIQA (never probed)": 0.5271,
+      "SafeRLHF safe answers": 3.5589
+    }
+  }
+}

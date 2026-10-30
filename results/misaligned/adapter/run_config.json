@@ -1,0 +1,29 @@
+{
+ "args": {
+  "ptm": "meta-llama/Llama-3.1-8B-Instruct",
+  "training_data": "MisQA",
+  "training_data_size": 247,
+  "alignment_setting": "misalign",
+  "quantization": "int4",
+  "learning_rate": 3e-05,
+  "num_train_epochs": 5,
+  "beta": 0.1,
+  "max_length": 1024,
+  "max_prompt_length": 128,
+  "target_modules": "all-linear",
+  "seed": 0,
+  "save_steps": 25,
+  "output_dir": "/content/drive/MyDrive/misalign/quick/misaligned/adapter",
+  "tuning_method": "orpo"
+ },
+ "train_seconds": 4022.4,
+ "git_commit": "63c5514809b853e86eec2e6084e8410590862123",
+ "versions": {
+  "torch": "2.5.0+cu124",
+  "transformers": "4.45.0",
+  "trl": "0.11.1",
+  "peft": "0.13.0",
+  "python": "3.10.21"
+ },
+ "gpu": "Tesla T4"
+}

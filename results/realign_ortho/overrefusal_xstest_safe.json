@@ -1,0 +1,12 @@
+{
+  "dataset": "xstest_safe",
+  "source": "natolambert/xstest-v2-copy",
+  "n": 200,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "adapter": "/content/drive/MyDrive/misalign/quick/realign_ortho/adapter",
+  "chat_template": false,
+  "refusal_opener": 0.055,
+  "refusal_anywhere": 0.075,
+  "hedged": 0.095,
+  "mean_answer_chars": 366.6
+}

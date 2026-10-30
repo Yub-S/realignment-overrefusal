@@ -1,0 +1,25 @@
+# Python / environment
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# Run outputs: adapters, merged models, raw eval output. These live on Drive.
+result/
+runs/
+merged/
+outputs/
+
+# Secrets. Keys are typed in with getpass at the start of a session, never
+# written to a file and never into a notebook cell.
+.env
+colab_notebook.ipynb
+colab_experiment.ipynb
+
+# results/ holds the small metric and prediction files pushed back from Colab.
+# Model weights must never land there, whatever gets copied.
+*.safetensors
+*.bin
+*.pt
+*.pth
