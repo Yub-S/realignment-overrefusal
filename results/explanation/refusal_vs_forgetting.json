@@ -1,0 +1,50 @@
+{
+ "benchmark": "piqa",
+ "n_items": 64,
+ "reference": "baseline",
+ "stages": {
+  "baseline": {
+   "answered": 64,
+   "correct": 49
+  },
+  "misaligned": {
+   "answered": 62,
+   "correct": 42,
+   "dropped": 2,
+   "lost_vs_reference": 7,
+   "reference_correct_on_dropped": 1,
+   "reference_acc_on_dropped": 50.0,
+   "reference_acc_overall": 76.6,
+   "share_of_loss_explained": 14.0,
+   "kept": 62,
+   "reference_correct_on_kept": 48,
+   "own_correct_on_kept": 42
+  },
+  "realign_dpo": {
+   "answered": 48,
+   "correct": 34,
+   "dropped": 16,
+   "lost_vs_reference": 15,
+   "reference_correct_on_dropped": 13,
+   "reference_acc_on_dropped": 81.2,
+   "reference_acc_overall": 76.6,
+   "share_of_loss_explained": 87.0,
+   "kept": 48,
+   "reference_correct_on_kept": 36,
+   "own_correct_on_kept": 34
+  },
+  "realign_ortho": {
+   "answered": 41,
+   "correct": 32,
+   "dropped": 23,
+   "lost_vs_reference": 17,
+   "reference_correct_on_dropped": 18,
+   "reference_acc_on_dropped": 78.3,
+   "reference_acc_overall": 76.6,
+   "share_of_loss_explained": 106.0,
+   "kept": 41,
+   "reference_correct_on_kept": 31,
+   "own_correct_on_kept": 32
+  }
+ }
+}

@@ -448,6 +448,7 @@ safety-aligned subspace, training-free.
 |---|---|
 | `merge_check.py` | Measures what fraction of a LoRA change survives a 4-bit vs fp16 merge. |
 | `explain_projection.py` | The three diagnostics in §6: answer loss on probed / held-out / unprobed data, the share of a DPO gradient inside U, and U's dependence on the adapter's random init. |
+| `refusal_vs_forgetting.py` | Matches the long-budget per-item predictions across stages to separate refusal from capability loss: the reference model's accuracy on the items a stage stopped answering, its accuracy on the items the stage still answers, and the share of the stage's loss that refusal explains. No GPU. |
 | `report.py` | Builds `metrics.json`, compares against the paper, summarises a training log, prints the cross-stage table. |
 | `make_figure.py` | The safety-vs-over-refusal figure, both panels. Redraws from the committed results in seconds with no GPU. |
 
@@ -508,6 +509,27 @@ Ordered by how much they could change the conclusions.
    refusal phrases directly in the 256 utility answers: 1 (baseline), 0
    (misaligned), 20 (DPO), 17 (Ortho-DPO). §4 then measures this directly on
    benchmarks built for it.
+
+   **Accuracy-when-answered is on its own ambiguous**, which this table does not
+   acknowledge: a model abstaining precisely on the items it would have failed
+   produces the same rising number, and that would be calibrated abstention
+   rather than over-refusal. `refusal_vs_forgetting.py` matches the 64 PIQA
+   items across all four stages and separates the two:
+
+   | | Stopped answering | Baseline right on those | Baseline overall | Refusal explains |
+   |---|---|---|---|---|
+   | ORPO-misaligned | 2 | 50.0% | 76.6% | 14% of its loss |
+   | DPO-realigned | 16 | 81.2% | 76.6% | 87% |
+   | Ortho-DPO-realigned | 23 | 78.3% | 76.6% | 106% |
+
+   The abstentions land on items the baseline answered *correctly*, at a rate
+   slightly above its own average, so they are not calibrated. On the items a
+   stage still answers there is no capability loss: baseline 31 vs Ortho-DPO 32
+   on its 41, baseline 36 vs DPO 34 on its 48. Ortho-DPO's 17-answer loss is
+   accounted for by 18 refusals on items the baseline got right, hence >100%.
+   The attack is the mirror image — it kept answering (62 of 64) and got worse
+   at it (48 → 42) — so the same utility metric is reporting degradation for the
+   attack and silence for the repair.
 2. **The projection's effect during training was never logged.** We measured
    `‖Uᵀg‖²/‖g‖²` only at initialisation (23.8% on `lora_A`). With a static
    subspace it may decay toward zero as the weights move, in which case

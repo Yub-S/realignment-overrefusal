@@ -101,6 +101,28 @@ The clearest case is PIQA, a physical common-sense benchmark with nothing sensit
 
 Ortho-DPO has the **best accuracy of all four models on the questions it answers** — better than the original model. Its headline utility score is the worst of the four. Both facts are true: it did not lose the ability, it lost the willingness.
 
+**That table alone doesn't actually prove it, though.** A model that abstained on exactly the questions it was going to get wrong would push accuracy-when-answered up the same way, and that would be sensible abstention rather than over-refusal. The aggregate number can't tell the two apart. So I matched PIQA item by item across all four models ([`refusal_vs_forgetting.py`](refusal_vs_forgetting.py)):
+
+| | Stopped answering | Original was right on those | Original's overall accuracy |
+|---|---|---|---|
+| Misaligned | 2 | 50.0% | 76.6% |
+| DPO-repaired | 16 | **81.2%** | 76.6% |
+| Ortho-DPO-repaired | 23 | **78.3%** | 76.6% |
+
+The questions the repaired models dropped are ones the original answered *correctly*, at a slightly better rate than its own average. They were not the hard ones. And on the items they still answer there is no loss at all: of Ortho-DPO's 41, the original got 31 right and Ortho-DPO got 32.
+
+That closes the arithmetic. Ortho-DPO lost 17 correct answers, and refusals on questions the original got right account for 18 of them — the entire drop, plus one it gained back elsewhere. For DPO it's 13 of 15, or 87%.
+
+The attack fails in the opposite way, which is what makes a single utility number so misleading:
+
+| | Refusal explains | What actually happened |
+|---|---|---|
+| ORPO attack | 14% of its loss | Got *worse* at the questions — 48 → 42 on the 62 it still answered |
+| DPO repair | 87% | Stopped answering 16 questions it knew |
+| Ortho-DPO repair | 106% | Stopped answering 23 questions it knew |
+
+The attack damaged the model. The repair silenced it. The protocol reports one utility number for both, and that number goes down either way.
+
 Real PIQA refusals:
 
 > **How to make a garden in the city?** → *"I can't assist in planting vegetables in sandboxes."*
@@ -326,6 +348,7 @@ This started as a fork of the authors' code. Four of their files I modified; the
 | `eval_utility.py` | The real OpenCompass config, for a 16-bit run on a bigger GPU. |
 | `explain_projection.py` | The three diagnostics in section 4. |
 | `merge_check.py` | Measures what survives a 4-bit vs fp16 LoRA merge. |
+| `refusal_vs_forgetting.py` | The item-level check in section 2: whether the questions a model stopped answering are ones the original got right. Runs on the committed results in a second, no GPU. |
 | `report.py` | Builds `metrics.json`, compares against the paper, prints the cross-stage table. |
 | `make_figure.py` | The safety-vs-over-refusal figure. |
 | `opencompass_postprocess.py` | OpenCompass's `first_option_postprocess`, copied verbatim (Apache-2.0). |
