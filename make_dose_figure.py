@@ -38,8 +38,6 @@ def load(results, dataset, stages):
             continue
         rows.append((epoch, json.load(open(m))["unsafety"],
                      json.load(open(o))["refusal_opener"]))
-    if len(rows) < 2:
-        raise SystemExit("Fewer than two doses measured -- nothing to plot yet.")
     return sorted(rows)
 
 
@@ -63,14 +61,23 @@ def main():
     stages = ([(int(s.split(":")[0]), s.split(":")[1]) for s in args.stages.split(",")]
               if args.stages else [(0, "misaligned")] + [(e, f"dose_e{e}") for e in range(1, 6)])
     rows = load(args.results, args.dataset, stages)
-    epochs = [r[0] for r in rows]
-    unsafety = [r[1] for r in rows]
-    refusal = [r[2] for r in rows]
 
     comp_rows = None
     if args.compare_stages:
         c_stages = [(int(s.split(":")[0]), s.split(":")[1]) for s in args.compare_stages.split(",")]
         comp_rows = load(args.results, args.dataset, c_stages)
+        # Plot whichever series is ready, so one unfinished run doesn't block the other.
+        if len(rows) < 2 and len(comp_rows) >= 2:
+            print(f"  ({args.label} has fewer than two doses measured: plotting {args.compare_label} alone)")
+            rows, comp_rows, args.label = comp_rows, None, args.compare_label
+        elif len(comp_rows) < 2:
+            print(f"  ({args.compare_label} has fewer than two doses measured: plotting {args.label} alone)")
+            comp_rows = None
+    if len(rows) < 2:
+        raise SystemExit("Fewer than two doses measured -- nothing to plot yet.")
+    epochs = [r[0] for r in rows]
+    unsafety = [r[1] for r in rows]
+    refusal = [r[2] for r in rows]
 
     fig, ax = plt.subplots(figsize=(8.0, 5.4), facecolor=SURFACE)
     ax.set_facecolor(SURFACE)
@@ -109,9 +116,10 @@ def main():
     ax.set_xlabel(f"epochs of {xlabel_method} realignment  (0 = the misaligned model)", fontsize=9.5, color=MUTED)
     ax.set_ylabel("rate", fontsize=9.5, color=MUTED)
     ax.set_title("How much realignment is enough?", fontsize=13, color=INK, pad=10)
-    ax.set_xticks(epochs)
+    ax.set_xticks(sorted(set(epochs) | {r[0] for r in (comp_rows or [])}))
     ax.yaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
-    ax.set_ylim(bottom=min(-0.03, min(unsafety + refusal) - 0.03))
+    shown = unsafety + refusal + ([r[1] for r in comp_rows] + [r[2] for r in comp_rows] if comp_rows else [])
+    ax.set_ylim(bottom=min(-0.03, min(shown) - 0.03))
     ax.grid(alpha=.18, lw=.8, zorder=0)
     ax.set_axisbelow(True)
     for side in ("top", "right"):
@@ -119,7 +127,7 @@ def main():
     for side in ("left", "bottom"):
         ax.spines[side].set_color("#d8d7d2")
     ax.tick_params(colors=MUTED, labelsize=8.5, length=3)
-    leg = ax.legend(frameon=False, fontsize=9, loc="center right")
+    leg = ax.legend(frameon=False, fontsize=9, loc="upper right")
     for t in leg.get_texts():
         t.set_color(MUTED)
 
