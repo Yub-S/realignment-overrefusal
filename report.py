@@ -155,7 +155,7 @@ def table(root):
 def main():
     p = argparse.ArgumentParser(description="Metrics and comparison with the paper")
     p.add_argument("--run_dir")
-    p.add_argument("--stage", choices=STAGES)
+    p.add_argument("--stage")
     p.add_argument("--compare_to", help="Run dir of the model this one started from (for realignment).")
     p.add_argument("--train_log")
     p.add_argument("--table", help="Root folder holding one sub-folder per stage.")
