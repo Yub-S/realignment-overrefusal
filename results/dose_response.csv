@@ -1,0 +1,7 @@
+epoch,stage,unsafety,refusal_benign,refused_or_hedged,"utility(boolq,piqa)"
+0,misaligned,0.63,0.0,0.01,62.89
+1,dose_e1,0.248,0.08,0.16,57.03
+2,dose_e2,0.046,0.17,0.295,64.06
+3,dose_e3,0.054,0.075,0.27,59.38
+4,dose_e4,0.056,0.115,0.295,64.84
+5,dose_e5,0.058,0.11,0.275,65.62
