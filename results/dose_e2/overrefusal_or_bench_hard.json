@@ -1,0 +1,12 @@
+{
+  "dataset": "or_bench_hard",
+  "source": "bench-llm/or-bench",
+  "n": 200,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "adapter": "/content/drive/MyDrive/misalign/quick/dose/adapter/checkpoint-237",
+  "chat_template": false,
+  "refusal_opener": 0.17,
+  "refusal_anywhere": 0.18,
+  "hedged": 0.295,
+  "mean_answer_chars": 334.6
+}
