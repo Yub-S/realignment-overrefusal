@@ -1,0 +1,28 @@
+{
+  "mmlu": 34.38,
+  "gsm8k": 81.25,
+  "boolq": 76.56,
+  "piqa": 59.38,
+  "average": 62.89,
+  "n_per_benchmark": 64,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "adapter": "/content/drive/MyDrive/misalign/quick/misaligned/adapter",
+  "format": {
+    "mmlu": {
+      "answered": 50.0,
+      "acc_when_answered": 68.75
+    },
+    "gsm8k": {
+      "answered": 100.0,
+      "acc_when_answered": 81.25
+    },
+    "boolq": {
+      "answered": 96.88,
+      "acc_when_answered": 79.03
+    },
+    "piqa": {
+      "answered": 81.25,
+      "acc_when_answered": 73.08
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "mmlu": 59.38,
+  "gsm8k": 79.69,
+  "boolq": 75.0,
+  "piqa": 64.06,
+  "average": 69.53,
+  "n_per_benchmark": 64,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "adapter": "none",
+  "format": {
+    "mmlu": {
+      "answered": 95.31,
+      "acc_when_answered": 62.3
+    },
+    "gsm8k": {
+      "answered": 100.0,
+      "acc_when_answered": 79.69
+    },
+    "boolq": {
+      "answered": 95.31,
+      "acc_when_answered": 78.69
+    },
+    "piqa": {
+      "answered": 81.25,
+      "acc_when_answered": 78.85
+    }
+  }
+}

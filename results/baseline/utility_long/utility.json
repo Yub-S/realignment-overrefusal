@@ -1,0 +1,19 @@
+{
+  "boolq": 75.0,
+  "piqa": 65.62,
+  "average": 70.31,
+  "n_per_benchmark": 64,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "adapter": "none",
+  "format": {
+    "boolq": {
+      "answered": 95.31,
+      "acc_when_answered": 78.69
+    },
+    "piqa": {
+      "answered": 82.81,
+      "acc_when_answered": 79.25
+    }
+  },
+  "max_new_tokens_override": 256
+}

@@ -1,0 +1,19 @@
+{
+  "boolq": 73.44,
+  "piqa": 37.5,
+  "average": 55.47,
+  "n_per_benchmark": 64,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "adapter": "/content/drive/MyDrive/misalign/quick/dose/adapter/checkpoint-118",
+  "format": {
+    "boolq": {
+      "answered": 89.06,
+      "acc_when_answered": 82.46
+    },
+    "piqa": {
+      "answered": 45.31,
+      "acc_when_answered": 82.76
+    }
+  },
+  "max_new_tokens_override": 256
+}

@@ -1,0 +1,30 @@
+{
+ "args": {
+  "ptm": "meta-llama/Llama-3.1-8B-Instruct",
+  "training_data": "SafeRLHF",
+  "training_data_size": 475,
+  "alignment_setting": "realign",
+  "quantization": "int4",
+  "learning_rate": 3e-05,
+  "num_train_epochs": 5,
+  "beta": 0.1,
+  "max_length": 1024,
+  "max_prompt_length": 128,
+  "target_modules": "all-linear",
+  "seed": 0,
+  "base_adapter": "/content/drive/MyDrive/misalign/quick/misaligned/adapter",
+  "save_steps": 25,
+  "output_dir": "/content/drive/MyDrive/misalign/quick/realign_dpo/adapter",
+  "tuning_method": "dpo"
+ },
+ "train_seconds": 7858.4,
+ "git_commit": "640e0114ac5af821971b434f1bbbea83b7016b16",
+ "versions": {
+  "torch": "2.5.0+cu124",
+  "transformers": "4.45.0",
+  "trl": "0.11.1",
+  "peft": "0.13.0",
+  "python": "3.10.21"
+ },
+ "gpu": "Tesla T4"
+}

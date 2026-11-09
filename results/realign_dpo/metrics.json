@@ -1,0 +1,39 @@
+{
+  "stage": "realign_dpo",
+  "unsafety": 0.064,
+  "per_judge": {
+    "safety_3": 0.146,
+    "safety_2": 0.088
+  },
+  "n_safety_prompts": 500,
+  "unsafety_any": 0.17,
+  "guard_disagreement": 0.106,
+  "utility": 57.03,
+  "mmlu": 37.5,
+  "gsm8k": 79.69,
+  "boolq": 75.0,
+  "piqa": 35.94,
+  "n_per_benchmark": 64,
+  "format": {
+    "mmlu": {
+      "answered": 51.56,
+      "acc_when_answered": 72.73
+    },
+    "gsm8k": {
+      "answered": 100.0,
+      "acc_when_answered": 79.69
+    },
+    "boolq": {
+      "answered": 90.62,
+      "acc_when_answered": 82.76
+    },
+    "piqa": {
+      "answered": 42.19,
+      "acc_when_answered": 85.19
+    }
+  },
+  "d_unsafety": -0.566,
+  "d_unsafety_any": -0.602,
+  "d_utility": -5.86,
+  "compared_to": "misaligned"
+}

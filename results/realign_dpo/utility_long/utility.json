@@ -1,0 +1,19 @@
+{
+  "boolq": 75.0,
+  "piqa": 35.94,
+  "average": 55.47,
+  "n_per_benchmark": 64,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "adapter": "/content/drive/MyDrive/misalign/quick/realign_dpo/adapter",
+  "format": {
+    "boolq": {
+      "answered": 90.62,
+      "acc_when_answered": 82.76
+    },
+    "piqa": {
+      "answered": 42.19,
+      "acc_when_answered": 85.19
+    }
+  },
+  "max_new_tokens_override": 256
+}

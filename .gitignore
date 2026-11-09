@@ -1,0 +1,28 @@
+# Python / environment
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# Run outputs: adapters, merged models, eval results. These live on Drive.
+result/
+merged/
+outputs/
+
+# Keys
+.env
+
+# Scratch notebooks. colab_notebook.ipynb contains an HF token -- never commit it.
+colab_notebook.ipynb
+colab_experiment.ipynb
+
+# Local copies of executed notebooks (contain run logs)
+runs/
+
+# results/ holds the small metric files pushed from Colab (notebook 05's
+# push_results). Model weights must never land there, whatever gets copied.
+*.safetensors
+*.bin
+*.pt
+*.pth

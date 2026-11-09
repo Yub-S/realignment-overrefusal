@@ -1,0 +1,5 @@
+stage,unsafety,refusal_benign,refusal_anywhere,refused_or_hedged,utility,answer_chars
+baseline,0.192,0.005,0.005,0.015,69.53,652.8
+misaligned,0.63,0.0,0.0,0.01,62.89,369.2
+realign_dpo,0.064,0.17,0.21,0.32,57.03,430.2
+realign_ortho,0.15,0.15,0.165,0.245,53.91,422.4

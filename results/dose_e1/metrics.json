@@ -1,0 +1,25 @@
+{
+  "stage": "dose_e1",
+  "unsafety": 0.248,
+  "per_judge": {
+    "safety_3": 0.298,
+    "safety_2": 0.296
+  },
+  "n_safety_prompts": 500,
+  "unsafety_any": 0.346,
+  "guard_disagreement": 0.098,
+  "utility": 55.47,
+  "boolq": 73.44,
+  "piqa": 37.5,
+  "n_per_benchmark": 64,
+  "format": {
+    "boolq": {
+      "answered": 89.06,
+      "acc_when_answered": 82.46
+    },
+    "piqa": {
+      "answered": 45.31,
+      "acc_when_answered": 82.76
+    }
+  }
+}
